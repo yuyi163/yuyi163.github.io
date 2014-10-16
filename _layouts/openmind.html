@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>{{ page.title }}</title>
+
+    <!-- CSS -->
+	<link rel="stylesheet" href="/static/bootstrap-3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/bootstrap-3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/font-awesome-4.0.3/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="/static/commons/css/animate.css" media="screen">
+    <link rel="stylesheet" href="/static/lightbox-2.6/css/lightbox.css" media="screen">
+    <link rel="stylesheet" href="/static/syntaxhighlighter-3.0.83/styles/shCore.css" media="screen">
+    <link rel="stylesheet" href="/static/syntaxhighlighter-3.0.83/styles/shThemeDefault.css" media="screen">
+
+    
+    <link rel="stylesheet" href="/static/commons/css/style.css" media="screen" title="default">
+    <link rel="stylesheet" href="/static/commons/css/color-default.css" media="screen" title="default">
+    <link rel="stylesheet" href="/static/commons/css/width-full.css" media="screen" title="default">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="/static/commons/js/html5shiv.js"></script>
+        <script src="/static/commons/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="boxed animated fadeIn animation-delay-5">
+
+        <header id="header" class="hidden-xs">
+            <div class="container">
+                <div id="header-title">
+                    <h1 class="animated fadeInDown"><a href="index.html">{{ site.name }} <span>的地盘</span></a></h1>
+                    <p class="animated fadeInLeft">生命在于运动，成功在于努力</p>
+                </div>
+
+                <div id="social-header" class="hidden-xs">
+                    <a href="https://github.com/luoxc" class="social-icon soc-github animated fadeInDown animation-delay-1"><i class="fa fa-github"></i></a>
+                </div>
+            </div> <!-- container -->
+        </header> <!-- header -->
+
+        <nav class="navbar navbar-static-top navbar-mind" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="/">{{ site.name }} <span>的地盘</span></a>
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-mind-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-inverse"></i>
+                    </button>
+                </div>
+                
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-mind-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span><span>&nbsp;首页</span></a></li>
+						{% for category in site.categories %}
+						<li><a href="/category/{{ category[0] }}.html">{{ category[0] }}</a></li>
+						{% endfor %}
+				   </ul> <!-- nav nabvar-nav -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/about.html">关于我</a></li>
+                    </ul> <!-- nav nabvar-nav -->
+                </div><!-- navbar-collapse -->
+            </div> <!-- container -->
+        </nav> <!-- navbar navbar-default -->
+
+        <header class="wrap-title">
+            <div class="container">
+                <h1 class="page-title">{{ page.title }}</h1>
+            </div>
+        </header>
+          
+        <div class="container">
+			{{ content }}
+			<!-- Duoshuo Comment BEGIN -->
+			<div id="comments" class="ds-thread"></div>
+			<script type="text/javascript">
+				var duoshuoQuery = {short_name:"luoxc"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+			<!-- Duoshuo Comment END -->
+        </div> <!-- container  -->
+
+        <aside id="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="footer-widget-title">站点导航</h3>
+                        <ul class="list-unstyled three_cols">
+                            <li><a href="/">首页</a></li>
+							{% for category in site.categories %}
+							<li><a href="/category/{{ category[0] }}.html">{{ category[0] }}</a></li>
+							{% endfor %}
+                            <li><a href="/about.html">关于我</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget-title">最新文章</h3>
+							{% for post in site.posts limit:3 %}
+								<div class="media">
+									<a class="pull-left" href="#"><img class="media-object" src="{{ post.img-url }}" width="75" height="75" alt="image"></a>
+									<div class="media-body">
+										<h4 class="media-heading"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+										<small>{{ post.date | date:"%Y-%m-%d" }}</small>
+									</div>
+								</div>
+							{% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget-title">当前工作</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                                    <a href="#" class="thumbnail"><img src="/downloads/image/work-1.png" class="img-responsive" alt="Image"></a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                                    <a href="#" class="thumbnail"><img src="/downloads/image/work-2.png" class="img-responsive" alt="Image"></a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                                    <a href="#" class="thumbnail"><img src="/downloads/image/work-3.png" class="img-responsive" alt="Image"></a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                                    <a href="#" class="thumbnail"><img src="/downloads/image/work-4.png" class="img-responsive" alt="Image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </aside> <!-- footer-widgets -->
+
+        <footer id="footer">
+            <p>&copy; 2014 <a href="/">{{ site.copyright }}</a>, inc. All rights reserved.</p>
+        </footer>
+
+    </div> <!-- boxed -->
+
+
+    <div id="back-top">
+        <a href="#header"><i class="fa fa-chevron-up"></i></a>
+    </div>
+
+    <!-- Scripts -->
+	<script src="/static/jquery/jquery-1.7.2.min.js"></script>
+	<script src="/static/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="/static/jquery/jquery.cookie.js"></script>
+    <script src="/static/jquery/jquery.mixitup.min.js"></script>
+    <script src="/static/lightbox-2.6/js/lightbox-2.6.min.js"></script>
+    <script src="/static/commons/js/holder.js"></script>
+    <script src="/static/commons/js/app.js"></script>
+    <script src="/static/commons/js/styleswitcher.js"></script>
+
+    <script src="/static/syntaxhighlighter-3.0.83/scripts/shCore.js"></script>
+    <script src="/static/syntaxhighlighter-3.0.83/scripts/shBrushXml.js"></script>
+    <script src="/static/syntaxhighlighter-3.0.83/scripts/shBrushJScript.js"></script>
+
+    <script type="text/javascript">
+        SyntaxHighlighter.all()
+    </script>
+</body>
+
+</html>
